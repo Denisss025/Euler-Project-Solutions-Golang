@@ -15,3 +15,4 @@ https://github.com/Denisss025/Euler-Project-Solutions-Golang
 |   001   | 233168 |
 |   002   | 4613732 |
 |   003   | 6857 |
+|   004   | 906609 |
