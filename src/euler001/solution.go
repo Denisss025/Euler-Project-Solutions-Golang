@@ -1,7 +1,7 @@
 package euler001
 
 import (
-    "euler"
+	"euler"
 	"euler/math"
 	"fmt"
 )
@@ -34,5 +34,5 @@ func Solution() (uint64, error) {
 }
 
 func init() {
-    euler.RegisterSolution("001", Solution)
+	euler.RegisterSolution("001", Solution)
 }
