@@ -1,19 +1,43 @@
 package math
 
-const maxU64 uint64 = 0xffffffffffffffff
+const MaxU64 uint64 = 0xffffffffffffffff
 
-func sbc(val uint64) uint64 {
-	var c uint64
-	for val != 0 {
-		c++
-		val >>= 1
+func Log2U(val uint64) uint8 {
+	if val == 0 {
+		return 0
 	}
 
-	return c
+	n := uint8(0)
+	if val&0xffffffff00000000 != 0 {
+		n += 32
+		val >>= 32
+	}
+
+	if val&0x00000000ffff0000 != 0 {
+		n += 16
+		val >>= 16
+	}
+
+	if val&0x000000000000ff00 != 0 {
+		n += 8
+		val >>= 8
+	}
+
+	if val&0x00000000000000f0 != 0 {
+		n += 4
+		val >>= 4
+	}
+
+	if val&0xc != 0 {
+		n += 2
+		val >>= 2
+	}
+
+	return n + uint8(val>>1)
 }
 
 func Sqrt(val uint64) uint64 {
-	var bits = sbc(val)
+	var bits = Log2U(val)
 	var x uint64 = 1 << ((bits >> 1) + 1)
 	var calc_next_x func(uint64) uint64
 	if bits < 32 {
