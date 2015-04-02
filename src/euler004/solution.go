@@ -5,17 +5,12 @@ import (
 	"fmt"
 )
 
-func lrMaxMin(digits uint8) (min uint64, max uint64) {
-	min = 1
+func palindromeGenerator(result chan uint64, digits uint8) {
+	min := uint64(1)
 	for i := digits; i > 1; i-- {
 		min *= 10
 	}
-	max = min * 10
-	return
-}
-
-func palindromeGenerator(result chan uint64, digits uint8) {
-	min, max := lrMaxMin(digits)
+	max := min * 10
 
 	for p := max - 1; p >= min; p-- {
 		var palindrome uint64
