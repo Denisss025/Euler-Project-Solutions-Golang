@@ -1,6 +1,11 @@
 package math
 
-const MaxU64 uint64 = 0xffffffffffffffff
+const (
+	MaxU8  uint8  = ^uint8(0)
+	MaxU16 uint16 = ^uint16(0)
+	MaxU32 uint32 = ^uint32(0)
+	MaxU64 uint64 = ^uint64(0)
+)
 
 func Log2U(val uint64) uint8 {
 	if val == 0 {
