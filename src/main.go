@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-const title = `#Project Euler Answers
+const md_title = `#Project Euler Answers
 
 ##Solved by
 
@@ -22,7 +22,7 @@ https://github.com/Denisss025/Euler-Project-Solutions-Golang
 |:-------:| ------ |`
 
 func main() {
-	fmt.Print(title)
+	fmt.Print(md_title)
 
 	fmt.Println()
 	euler.RunSolutions(func(name string, solution euler.SolutionFunc) {
