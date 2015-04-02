@@ -1,23 +1,33 @@
 package euler002
 
-import (
-	"euler"
-)
+import "euler"
 
-func Solution() (uint64, error) {
-	var prev uint64
-	var curr uint64 = 1
-	var sum uint64
+func fibGen(fib chan uint64) {
+	fib <- 0
 
-	for curr < 4000000 {
-		if curr&0x1 == 0x0 {
-			sum += curr
-		}
+	prev, curr := uint64(0), uint64(1)
 
+	for {
+		fib <- curr
 		prev, curr = curr, curr+prev
 	}
+}
 
-	return sum, nil
+func sumEvenFib(limit uint64) (sum uint64, err error) {
+	fib := make(chan uint64, 10)
+	go fibGen(fib)
+
+	for fibNum := <-fib; fibNum < limit; fibNum = <-fib {
+		if fibNum&0x1 == 0x0 {
+			sum += fibNum
+		}
+	}
+
+	return
+}
+
+func Solution() (uint64, error) {
+	return sumEvenFib(4000000)
 }
 
 func init() {
