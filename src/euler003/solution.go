@@ -1,21 +1,16 @@
 package euler003
 
-import (
-	"euler"
-)
+import "euler"
 
 func maxPrimeFactor(val uint64) uint64 {
-	var divisor uint64 = 3
-
-	for val&0x1 == 0 {
+	for val != 0 && val&0x1 == 0 {
 		val >>= 1
 	}
 
-	for divisor < val {
+	for divisor := uint64(3); divisor < val; divisor += 2 {
 		for val%divisor == 0 {
 			val /= divisor
 		}
-		divisor += 2
 	}
 
 	return val
