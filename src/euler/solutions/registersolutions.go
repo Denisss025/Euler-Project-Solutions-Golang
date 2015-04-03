@@ -7,4 +7,5 @@ import (
 	_ "euler004"
 	_ "euler005"
 	_ "euler006"
+	_ "euler007"
 )
