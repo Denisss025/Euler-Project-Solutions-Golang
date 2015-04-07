@@ -9,4 +9,5 @@ import (
 	_ "euler006"
 	_ "euler007"
 	_ "euler010"
+	_ "euler015"
 )
