@@ -3,7 +3,6 @@ package euler015
 import (
 	"errors"
 	"euler"
-	"euler/math"
 )
 
 func countRotes(n uint8) (result uint64, err error) {
@@ -11,16 +10,16 @@ func countRotes(n uint8) (result uint64, err error) {
 		return
 	}
 
+	if n > 31 {
+		err = errors.New("Integer overflow")
+		return
+	}
+
 	result = 1
 	n2 := uint64(n)*2 + 1
-	for i := uint64(2); i < n2; i++ {
-		if math.MaxU64/i < result {
-			err = errors.New("Integer overflow")
-			result = 0
-			return
-		}
+	for i := uint64(n + 1); i < n2; i++ {
 		result *= i
-		result /= (i + 1) >> 1
+		result /= i - uint64(n)
 	}
 
 	return
