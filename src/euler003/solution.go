@@ -14,17 +14,17 @@ func maxPrimeFactor(val uint64) uint64 {
 		val /= 3
 	}
 
-	maxDivisor := math.Sqrt(val)
+	maxDivisor := math.FloorSqrt(val)
 	for divisor := uint64(5); divisor < maxDivisor; divisor += 4 {
 		for val > divisor && val%divisor == 0 {
 			val /= divisor
-			maxDivisor = math.Sqrt(val)
+			maxDivisor = math.FloorSqrt(val)
 		}
 
 		divisor += 2
 		for val > divisor && val%divisor == 0 {
 			val /= divisor
-			maxDivisor = math.Sqrt(val)
+			maxDivisor = math.FloorSqrt(val)
 		}
 	}
 	return val

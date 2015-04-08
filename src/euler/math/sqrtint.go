@@ -7,12 +7,12 @@ const (
 	MaxU64 uint64 = ^uint64(0)
 )
 
-func Log2U(val uint64) uint8 {
+func FloorLog2(val uint64) uint64 {
 	if val == 0 {
 		return 0
 	}
 
-	n := uint8(0)
+	n := uint64(0)
 	if val&0xffffffff00000000 != 0 {
 		n += 32
 		val >>= 32
@@ -38,11 +38,11 @@ func Log2U(val uint64) uint8 {
 		val >>= 2
 	}
 
-	return n + uint8(val>>1)
+	return n + (val >> 1)
 }
 
-func Sqrt(val uint64) uint64 {
-	var bits = Log2U(val)
+func FloorSqrt(val uint64) uint64 {
+	var bits = FloorLog2(val)
 	var x uint64 = 1 << ((bits >> 1) + 1)
 	var calc_next_x func(uint64) uint64
 	if bits < 32 {

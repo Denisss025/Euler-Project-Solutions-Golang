@@ -11,7 +11,7 @@ func sum3n5(limit uint64) (uint64, error) {
 	var limDiv05 uint64 = (limit - 1) / 5
 	var limDiv15 uint64 = (limit - 1) / 15
 
-	if math.Sqrt(math.MaxU64) < 1+limDiv03 {
+	if math.FloorSqrt(math.MaxU64) < 1+limDiv03 {
 		return 0, fmt.Errorf("%s", "Integer overflow for limDiv03")
 	}
 
@@ -21,7 +21,7 @@ func sum3n5(limit uint64) (uint64, error) {
 	}
 	sum03 *= 3
 
-	if (math.Sqrt(math.MaxU64-sum03)/5)*2 < 1+limDiv05 {
+	if (math.FloorSqrt(math.MaxU64-sum03)/5)*2 < 1+limDiv05 {
 		return 0, fmt.Errorf("%s", "Integer overflow for final result")
 	}
 
