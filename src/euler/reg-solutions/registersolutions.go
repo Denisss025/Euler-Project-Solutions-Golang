@@ -1,4 +1,4 @@
-package solutions
+package euler
 
 import (
 	_ "euler001"

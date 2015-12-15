@@ -2,8 +2,9 @@ package main
 
 import (
 	"euler"
-	_ "euler/solutions"
 	"fmt"
+	
+	_ "euler/reg-solutions"
 )
 
 const md_title = `#Project Euler Answers
